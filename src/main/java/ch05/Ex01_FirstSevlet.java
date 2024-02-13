@@ -8,11 +8,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-/**
- * Servlet implementation class Ex01_FirstSevlet
- */
-@WebServlet("/hello")
+// 웹 브라우저의 주소창에 localhost:8080/jw/hello 를 입력하면 처리됨
+@WebServlet({"/hello", "/ch05/hello"}) // hello와 ch05/hello 모두 가능
 public class Ex01_FirstSevlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
 	// Get 방식의 요청이 왔을 때 처리하는 코드
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String html = "<!DOCTYPE html>"
