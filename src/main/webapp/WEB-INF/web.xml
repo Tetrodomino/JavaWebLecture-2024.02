@@ -4125,4 +4125,24 @@
     <servlet-name>Ex02_parameter</servlet-name>
     <url-pattern>/Ex02_parameter</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Ex03_calculator</display-name>
+    <servlet-name>Ex03_calculator</servlet-name>
+    <servlet-class>ch06_basic.Ex03_calculator</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Ex03_calculator</servlet-name>
+    <url-pattern>/Ex03_calculator</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Ex04_RegisterMember</display-name>
+    <servlet-name>Ex04_RegisterMember</servlet-name>
+    <servlet-class>ch06_basic.Ex04_RegisterMember</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Ex04_RegisterMember</servlet-name>
+    <url-pattern>/Ex04_RegisterMember</url-pattern>
+  </servlet-mapping>
 </web-app>
