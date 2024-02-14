@@ -68,7 +68,7 @@ public class Ex03_calculator2 extends HttpServlet {
 		
 		// 방법 1
 		// calc.jsp를 직접 호출하여
-		// num1, num2, result 속성(name)을 가진 태그의 값을 변경시키기
+		// num1, num2, result 속성을 가진 태그의 값을 변경시키기 (ex: calc.jsp에 있는 ${num1}의 값을 num1로 넣음)
 		RequestDispatcher rd = request.getRequestDispatcher("/ch06/calc.jsp");
 		request.setAttribute("num1", num1);
 		request.setAttribute("num2", num2);

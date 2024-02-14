@@ -27,7 +27,7 @@ public class Ex04_RegisterMember extends HttpServlet {
 		// form 내부 input 태그의 값들을 String으로 저장
 		String uid = request.getParameter("uid"); // registerForm.jsp의 name속성이 uid인 태그의 값 가져오기
 		String pwd = request.getParameter("pwd");
-		String pwd2 = request.getParameter("pwd2");
+		//String pwd2 = request.getParameter("pwd2");
 		String name = request.getParameter("name_reg");
 		String email = request.getParameter("email");
 		

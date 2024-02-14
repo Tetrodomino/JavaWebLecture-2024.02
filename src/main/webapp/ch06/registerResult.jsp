@@ -9,7 +9,7 @@
 <body style="margin: 50px;">
 	<h1>회원 가입 결과</h1>
 	<hr>
-	<table style="padding: 3px">
+	<table style="padding: 3px" border="1">
 		<tr>
 			<td>아이디</td><td>${user.uid}</td> <!-- RegisterMember.java에서 받은 user 객체의 uid만 반환하는 법 -->
 		</tr>
