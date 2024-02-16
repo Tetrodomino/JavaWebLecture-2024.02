@@ -4205,4 +4205,44 @@
     <servlet-name>Ex05_Update</servlet-name>
     <url-pattern>/Ex05_Update</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>KcityController</display-name>
+    <servlet-name>KcityController</servlet-name>
+    <servlet-class>ch07_dao.kcity.KcityController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>KcityController</servlet-name>
+    <url-pattern>/KcityController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>KcityController2</display-name>
+    <servlet-name>KcityController2</servlet-name>
+    <servlet-class>ch07_dao.kcity.KcityController2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>KcityController2</servlet-name>
+    <url-pattern>/KcityController2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>KcityController3</display-name>
+    <servlet-name>KcityController3</servlet-name>
+    <servlet-class>ch07_dao.kcity.KcityController3</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>KcityController3</servlet-name>
+    <url-pattern>/KcityController3</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GGController</display-name>
+    <servlet-name>GGController</servlet-name>
+    <servlet-class>ch07_dao.girlgroup.GGController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GGController</servlet-name>
+    <url-pattern>/GGController</url-pattern>
+  </servlet-mapping>
 </web-app>

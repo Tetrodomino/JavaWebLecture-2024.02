@@ -35,7 +35,7 @@ public class CityDao { // 데이터베이스에서 도시 데이터를 꺼내오
 	public City getCity(int id) {
 		Connection conn = getConnection();
 		
-		String sql = "select * from city where id=?";
+		String sql = "select * from kcity where id=?";
 		
 		City city = null;
 		try {
