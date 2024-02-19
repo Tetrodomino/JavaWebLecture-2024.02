@@ -29,7 +29,7 @@ public class Ex01_SetSession extends HttpServlet {
 		
 		session.setMaxInactiveInterval(60 * 60); // 세션 대기 시간 60분으로
 
-		session.invalidate();
+		//session.invalidate();
 		
 		//response.getWriter().append("served at: ").append(request.getContextPath());
 		RequestDispatcher rd = request.getRequestDispatcher("/ch09/session.jsp");
