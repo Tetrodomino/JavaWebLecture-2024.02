@@ -33,6 +33,13 @@ public class KpopDaoImpl implements KpopDao {
 		String sql = "select l.*, r.* from girl_group l"
 				+ " left outer join song r"
 				+ " on l.hit_song_id=r.sid";
+//		String sql2 = "SELECT r.gid, r.name, r.debut, l.sid, l.title, l.lyrics FROM song l"
+//				+ "	LEFT OUTER JOIN girl_group r"
+//				+ "	ON l.sid=r.hit_song_id"
+//				+ "UNION"
+//				+ "SELECT r.gid, r.name, r.debut, l.sid, l.title, l.lyrics FROM song l"
+//				+ "	RIGHT OUTER JOIN girl_group r"
+//				+ "	ON l.sid=r.hit_song_id";
 		
 		List<Kpop> list = new ArrayList<Kpop>();
 		

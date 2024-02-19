@@ -28,11 +28,11 @@
 		<c:forEach var="kpop" items="${list}"> <!-- for (city c: list)와 동일 -->
 			<tr>
 				<td>${kpop.aid}</td>
-				<td><a href="/jw/ch07/kpop/updateartist?id=${kpop.aid}">${kpop.name}</a></td>
+				<td><a href="/jw/ch07/kpop/updateartist?id=${kpop.aid}">${kpop.name}</a></td> <!-- 아티스트 데이터 수정 -->
 				<td>${kpop.debut}</td>
-				<td><a href="/jw/ch07/kpop/updatesong?id=${kpop.sid}">${kpop.title}</a></td>
+				<td><a href="/jw/ch07/kpop/updatesong?id=${kpop.sid}">${kpop.title}</a></td> <!-- 노래 데이터 수정 -->
 				<td>${kpop.lyrics}</td>
-				<td> <!-- 도시의 데이터를 수정 및 삭제하는 버튼을 만드는 공간 -->
+				<td> <!-- 아티스트나 노래의 데이터를 삭제하는 버튼을 만드는 공간 -->
 					<a href="/jw/ch07/kpop/deleteartist?id=${kpop.aid}">아티스트</a>
 					<a href="/jw/ch07/kpop/deletesong?id=${kpop.sid}">노래</a>
 				</td>

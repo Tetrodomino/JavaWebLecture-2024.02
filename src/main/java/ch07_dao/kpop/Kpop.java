@@ -20,7 +20,6 @@ public class Kpop {
 	}
 
 	public Kpop(int aid, String name, LocalDate debut, int sid) {
-		super();
 		this.aid = aid;
 		this.name = name;
 		this.debut = debut;
