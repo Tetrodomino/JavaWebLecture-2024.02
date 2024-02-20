@@ -126,7 +126,7 @@ public class UserController extends HttpServlet {
 				else
 				{
 					u = new User(uid, pwd, uname, email);
-					usvc.insertUser(u);
+					usvc.registerUser(u);
 					
 					msg = "가입을 환영합니다";
 					url = "/jw/ch09/user/login";
@@ -141,7 +141,11 @@ public class UserController extends HttpServlet {
 		case "update":
 			if (method.equals("GET"))
 			{
+				uid = request.getParameter("uid");
+				u = usvc.getUserByUid(uid);
+				
 				rd = request.getRequestDispatcher("/ch09/user/update.jsp");
+				request.setAttribute("user", u);
 				rd.forward(request, response);
 			}
 			else
@@ -155,6 +159,16 @@ public class UserController extends HttpServlet {
 				if (!pwd.equals(pwd2))
 				{
 					msg = "패스워드가 잘못 입력되었습니다";
+					url = "/jw/ch09/user/update";
+					
+					rd = request.getRequestDispatcher("/ch09/user/alertMsg.jsp");
+					request.setAttribute("msg", msg);
+					request.setAttribute("url", url);
+					rd.forward(request, response);
+				}
+				else if (usvc.getUserByUid(uid) != null)
+				{
+					msg = "이미 존재하는 계정입니다";
 					url = "/jw/ch09/user/update";
 					
 					rd = request.getRequestDispatcher("/ch09/user/alertMsg.jsp");
