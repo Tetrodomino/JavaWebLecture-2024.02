@@ -1,4 +1,4 @@
-package ch09_cookie_session.user;
+package project.controller;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -7,14 +7,17 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import project.entity.User;
+import project.service.UserService;
+import project.service.UserServiceImpl;
 
 import java.io.IOException;
 import java.util.List;
 
 import org.mindrot.jbcrypt.BCrypt;
 
-@WebServlet({"/ch09/user/list", "/ch09/user/register", "/ch09/user/update"
-	, "/ch09/user/delete", "/ch09/user/login", "/ch09/user/logout"})
+@WebServlet({"/bbs/user/list", "/bbs/user/register", "/bbs/user/update"
+	, "/bbs/user/delete", "/bbs/user/login", "/bbs/user/logout"})
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -49,16 +52,14 @@ public class UserController extends HttpServlet {
 			
 			List<User> list = usvc.getUserList(page);
 			request.setAttribute("list", list);
-//			rd = request.getRequestDispatcher("/ch09/user/list.jsp");
-			rd = request.getRequestDispatcher("/ch09/user/listBS.jsp");
+			rd = request.getRequestDispatcher("/WEB-INF/view/user/list.jsp");
 			rd.forward(request, response);
 			break;
 		case "login":
 			if (method.equals("GET"))
 			{
 				// 로그인 화면 띄우기
-//				rd = request.getRequestDispatcher("/ch09/user/login.jsp");
-				rd = request.getRequestDispatcher("/ch09/user/loginBS.jsp");
+				rd = request.getRequestDispatcher("/WEB-INF/view/user/login.jsp");
 				rd.forward(request, response);
 			}
 			else 
@@ -79,21 +80,21 @@ public class UserController extends HttpServlet {
 					session.setAttribute("sessUname", u.getUname());
 					
 					msg = u.getUname() + "님 환영합니다.";
-					url = "/jw/ch09/user/list?page=1"; // 초기 화면으로 가는 url
+					url = "/jw/bbs/user/list?page=1"; // 초기 화면으로 가는 url
 				}
 				else if (result == usvc.WRONG_PASSWORD)
 				{
 					msg = "패스워드가 틀립니다";
-					url = "/jw/ch09/user/login";
+					url = "/jw/bbs/user/login";
 				}
 				else
 				{
 					msg = "ID 입력이 잘못되었습니다";
-					url = "/jw/ch09/user/login";
+					url = "/jw/bbs/user/login";
 				}
 				
 				// 알림창 띄우기
-				rd = request.getRequestDispatcher("/ch09/user/alertMsg.jsp");
+				rd = request.getRequestDispatcher("/WEB-INF/view/common/alertMsg.jsp");
 				request.setAttribute("msg", msg);
 				request.setAttribute("url", url);
 				rd.forward(request, response);
@@ -102,13 +103,12 @@ public class UserController extends HttpServlet {
 		case "logout":
 			// 세션을 비활성화하고 리스트로 돌아가기
 			session.invalidate(); 
-			response.sendRedirect("/jw/ch09/user/list?page=1");
+			response.sendRedirect("/jw/bbs/user/list?page=1");
 			break;
 		case "register":
 			if (method.equals("GET"))
 			{
-//				rd = request.getRequestDispatcher("/ch09/user/register.jsp");
-				rd = request.getRequestDispatcher("/ch09/user/registerBS.jsp");
+				rd = request.getRequestDispatcher("/WEB-INF/view/user/register.jsp");
 				rd.forward(request, response);
 			}
 			else
@@ -122,9 +122,9 @@ public class UserController extends HttpServlet {
 				if (!pwd.equals(pwd2))
 				{
 					msg = "패스워드가 잘못 입력되었습니다";
-					url = "/jw/ch09/user/register";
+					url = "/jw/bbs/user/register";
 					
-					rd = request.getRequestDispatcher("/ch09/user/alertMsg.jsp");
+					rd = request.getRequestDispatcher("/WEB-INF/view/common/alertMsg.jsp");
 					request.setAttribute("msg", msg);
 					request.setAttribute("url", url);
 					rd.forward(request, response);
@@ -132,9 +132,9 @@ public class UserController extends HttpServlet {
 				else if (usvc.getUserByUid(uid) != null)
 				{
 					msg = "이미 존재하는 계정입니다";
-					url = "/jw/ch09/user/register";
+					url = "/jw/bbs/user/register";
 					
-					rd = request.getRequestDispatcher("/ch09/user/alertMsg.jsp");
+					rd = request.getRequestDispatcher("/WEB-INF/view/common/alertMsg.jsp");
 					request.setAttribute("msg", msg);
 					request.setAttribute("url", url);
 					rd.forward(request, response);
@@ -145,9 +145,9 @@ public class UserController extends HttpServlet {
 					usvc.registerUser(u);
 					
 					msg = "가입을 환영합니다";
-					url = "/jw/ch09/user/login";
+					url = "/jw/bbs/user/login";
 					
-					rd = request.getRequestDispatcher("/ch09/user/alertMsg.jsp");
+					rd = request.getRequestDispatcher("/WEB-INF/view/common/alertMsg.jsp");
 					request.setAttribute("msg", msg);
 					request.setAttribute("url", url);
 					rd.forward(request, response);
@@ -160,8 +160,7 @@ public class UserController extends HttpServlet {
 				uid = request.getParameter("uid");
 				u = usvc.getUserByUid(uid);
 				
-//				rd = request.getRequestDispatcher("/ch09/user/update.jsp");
-				rd = request.getRequestDispatcher("/ch09/user/updateBS.jsp");
+				rd = request.getRequestDispatcher("/WEB-INF/view/user/update.jsp");
 				request.setAttribute("user", u);
 				rd.forward(request, response);
 			}
@@ -176,9 +175,9 @@ public class UserController extends HttpServlet {
 				if (!pwd.equals(pwd2))
 				{
 					msg = "패스워드가 잘못 입력되었습니다";
-					url = "/jw/ch09/user/update";
+					url = "/jw/bbs/user/update";
 					
-					rd = request.getRequestDispatcher("/ch09/user/alertMsg.jsp");
+					rd = request.getRequestDispatcher("/WEB-INF/view/common/alertMsg.jsp");
 					request.setAttribute("msg", msg);
 					request.setAttribute("url", url);
 					rd.forward(request, response);
@@ -186,9 +185,9 @@ public class UserController extends HttpServlet {
 				else if (usvc.getUserByUid(uid) != null)
 				{
 					msg = "이미 존재하는 계정입니다";
-					url = "/jw/ch09/user/update";
+					url = "/jw/bbs/user/update";
 					
-					rd = request.getRequestDispatcher("/ch09/user/alertMsg.jsp");
+					rd = request.getRequestDispatcher("/WEB-INF/view/common/alertMsg.jsp");
 					request.setAttribute("msg", msg);
 					request.setAttribute("url", url);
 					rd.forward(request, response);
@@ -204,9 +203,9 @@ public class UserController extends HttpServlet {
 					usvc.updateUser(u);
 					
 					msg = "회원 정보가 수정되었습니다";
-					url = "/jw/ch09/user/list?page=1";
+					url = "/jw/bbs/user/list?page=1";
 					
-					rd = request.getRequestDispatcher("/ch09/user/alertMsg.jsp");
+					rd = request.getRequestDispatcher("/WEB-INF/view/common/alertMsg.jsp");
 					request.setAttribute("msg", msg);
 					request.setAttribute("url", url);
 					rd.forward(request, response);
@@ -217,12 +216,12 @@ public class UserController extends HttpServlet {
 			uid = request.getParameter("uid");
 			usvc.deleteUser(uid);
 			
-			response.sendRedirect("/jw/ch09/user/list");
+			response.sendRedirect("/jw/bbs/user/list");
 			break;
 		default:
-			rd = request.getRequestDispatcher("/ch09/user/alertMsg.jsp");
+			rd = request.getRequestDispatcher("/WEB-INF/view/common/alertMsg.jsp");
 			request.setAttribute("msg", "잘못된 접근입니다");
-			request.setAttribute("url", "/jw/ch09/user/list");
+			request.setAttribute("url", "/jw/bbs/user/list");
 			rd.forward(request, response);
 		}
 	}
