@@ -66,5 +66,10 @@ public class UserServiceImpl implements UserService {
 		return CORRECT_LOGIN;
 	}
 
+	@Override
+	public int getUserCount() {
+		return userDao.getUserCount();
+	}
+
 	
 }

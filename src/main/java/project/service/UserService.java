@@ -20,6 +20,9 @@ public interface UserService {
 	// 사용자 목록 조회 
 	List<User> getUserList(int page);
 	
+	// 페이지 수 조회
+	int getUserCount();
+	
 	void insertUser(User user);
 	
 	// 사용자 정보 갱신

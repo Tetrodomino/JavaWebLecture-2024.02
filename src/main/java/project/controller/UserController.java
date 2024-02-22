@@ -12,6 +12,7 @@ import project.service.UserService;
 import project.service.UserServiceImpl;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -49,9 +50,20 @@ public class UserController extends HttpServlet {
 		case "list":
 			String page_ = request.getParameter("page");
 			int page = (page_ == null || page_.equals("")) ? 1 : Integer.parseInt(page_);
-			
+			session.setAttribute("currentUserPage", page_);
 			List<User> list = usvc.getUserList(page);
-			request.setAttribute("list", list);
+			request.setAttribute("userlist", list);
+			
+			// 유저 수 찾기
+			int totalUsers = usvc.getUserCount();
+			int totalPages = (totalUsers - 1) / 10 + 1;
+			List<String> pageList = new ArrayList<String>();
+			for (int i = 1; i <= totalPages; i++)
+			{
+				pageList.add(i + "");
+			}
+			request.setAttribute("pageList", pageList);
+			
 			rd = request.getRequestDispatcher("/WEB-INF/view/user/list.jsp");
 			rd.forward(request, response);
 			break;
@@ -80,7 +92,7 @@ public class UserController extends HttpServlet {
 					session.setAttribute("sessUname", u.getUname());
 					
 					msg = u.getUname() + "님 환영합니다.";
-					url = "/jw/bbs/user/list?page=1"; // 초기 화면으로 가는 url
+					url = "/jw/bbs/board/list?page=1"; // 초기 화면으로 가는 url
 				}
 				else if (result == usvc.WRONG_PASSWORD)
 				{
