@@ -15,3 +15,6 @@ currentUserPage"
 ,POST,"uid, pwd",/user/list?page=1,,"sessionUid, sessionUname
 µî·Ï"
 /user/logout,GET,,/user/list?page=1,,
+,,,,,
+/board/list,GET,"page, field, query","/board/list.jsp
+(board viewer)",,

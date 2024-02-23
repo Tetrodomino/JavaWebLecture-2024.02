@@ -115,7 +115,7 @@ public class UserController extends HttpServlet {
 		case "logout":
 			// 세션을 비활성화하고 리스트로 돌아가기
 			session.invalidate(); 
-			response.sendRedirect("/jw/bbs/user/list?page=1");
+			response.sendRedirect("/jw/bbs/user/login");
 			break;
 		case "register":
 			if (method.equals("GET"))

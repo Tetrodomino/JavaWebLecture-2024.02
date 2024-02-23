@@ -24,8 +24,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int getBoardCount() {
-		return bDao.getBoardCount();
+	public int getBoardCount(String field, String query) {
+		return bDao.getBoardCount(field, query);
 	}
 
 	@Override
@@ -35,12 +35,12 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void updateBoard(Board board) {
-		
+		bDao.updateBoard(board);
 	}
 
 	@Override
 	public void deleteBoard(int bid) {
-		
+		bDao.deleteBoard(bid);
 	}
 
 	@Override
