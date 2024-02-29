@@ -3,11 +3,11 @@ Routing table,,,,,
 "path
 (/jw/ch09는 공통)",method,입력 파라메터,"viewer
 다음 행선지",넘겨줄 파라메터,설명
-/user/list,GET,page,list viewer,list(user),list.jsp
-/user/register,GET,,register Viewer,,register.jsp
+/user/list,GET,page,list viewer,user List,/user/list.jsp
+/user/register,GET,,register Viewer,,/user/register.jsp
 ,POST,"uid, pwd, pwd2(확인), name, email",/user/list?page=1,,"session의
 currentUserPage"
-/user/update,GET,,update viewer,user,update.jsp
+/user/update,GET,,update viewer,user,/user/update.jsp
 ,POST,"uid, pwd, pwd2(확인), name, email",/user/list?page=1,,"pwd, pwd2가 null이 아니면서 동일한 경우
 패스워드 변경"
 /user/delete,GET,uid,/user/list?page=1,,
@@ -16,5 +16,10 @@ currentUserPage"
 등록"
 /user/logout,GET,,/user/list?page=1,,
 ,,,,,
-/board/list,GET,"page, field, query","/board/list.jsp
-(board viewer)",,
+/board/list,GET,"page, field, query",board list viewer,"page List, board List",/board/list.jsp
+/board/insert,GET,,board insert viewer,,/board/insert.jsp
+,POST,"title, content",/board/list,Board,
+/board/detail,GET,"bid, uid ",board detail viewer,"Board, reply List","/board/detail,jsp"
+/board/delete,GET,bid,/board/list,"page, field,query",
+/board/update,GET,bid,board update viewer,Board,/board/update.jsp
+,POST,"bid, uid, title, content",/board/detail,"bid, uid",
